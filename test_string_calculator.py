@@ -22,8 +22,13 @@ class TestStringCalculator(unittest.TestCase):
 
   def test_negatives(self):
     self.assertRaises(ValueError, add ,"1,-2")
+    self.assertRaises(ValueError, add ,"//*\n1*-2")
 
     try:
       add("1,-2,3")
     except ValueError as e:
       self.assertEqual(str(e), 'negatives not allowed. found -2')
+
+  def test_numbers_bigger_than_thousand(self):
+    self.assertEqual(add('2,1001,3'), 5)
+    self.assertEqual(add('//;\n1003;1001;1005'), 0)

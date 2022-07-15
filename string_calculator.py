@@ -19,4 +19,10 @@ def add(numbers: str):
   for num in nums:
     if num < 0:
       raise ValueError(f'negatives not allowed. found {num}')
-  return sum(nums) 
+
+  # ignore numbers bigger than 1000
+  total = 0
+  for num in nums:
+    if num <= 1000:
+      total += num
+  return total
