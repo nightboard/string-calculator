@@ -38,3 +38,7 @@ class TestStringCalculator(unittest.TestCase):
     self.assertEqual(add('//***\n1***2***3***1001'), 6)
     self.assertRaises(ValueError, add, '//***\n1***2***3***')
     self.assertRaises(ValueError, add, '//***\n1***2\n3***')
+
+  def test_multiple_types_of_delemeter(self):
+    self.assertEqual(add('//[;][%]\n1;2%3\n4'), 10)
+    self.assertEqual(add('//[;][%]\n1;2%3\n4%1001;2'), 12)
