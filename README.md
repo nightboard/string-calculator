@@ -1,4 +1,5 @@
 ## String Calculator with TDD
+- run: `python test_string_calculator.py`
 - run: `python -m unittest test_string_calculator.py`
 
 - program support multiple delemeters with multiple length.

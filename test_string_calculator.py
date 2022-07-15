@@ -46,3 +46,6 @@ class TestStringCalculator(unittest.TestCase):
   def test_multiple_types_of_delemeters_of_multiple_length(self):
     self.assertEqual(add('//[;;][%][***]\n1;;2%3***4%1000'), 1010)
     self.assertEqual(add('//[;;][%][***]\n1;;2%3***4%1000\n5'), 1015)
+
+if __name__ == '__main__':
+  unittest.main()
