@@ -14,4 +14,9 @@ def add(numbers: str):
     pattern = f',|\n|\{del_}'
 
   nums = [ int(_) for _ in re.split(pattern, numbers) ]
+
+  # check for negatives
+  for num in nums:
+    if num < 0:
+      raise ValueError(f'negatives not allowed. found {num}')
   return sum(nums) 

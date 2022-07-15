@@ -19,3 +19,11 @@ class TestStringCalculator(unittest.TestCase):
     self.assertEqual(add("//;\n1;2;3;4"), 10)
     self.assertEqual(add("//*\n1*2*3*4"), 10)
     self.assertRaises(ValueError, add, "//*\n1*\n")
+
+  def test_negatives(self):
+    self.assertRaises(ValueError, add ,"1,-2")
+
+    try:
+      add("1,-2,3")
+    except ValueError as e:
+      self.assertEqual(str(e), 'negatives not allowed. found -2')
