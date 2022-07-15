@@ -1,13 +1,17 @@
+import re
+
 def add(numbers: str):
   if numbers == '':
     return 0
 
-  splits = numbers.split(',')
+  del_ = None
+  if numbers[:2] == '//':
+    numbers = numbers[2:]
+    del_, numbers = re.split('\n', numbers, 1)
 
-  total = 0
-  for split in splits:
-    nums = [ int(_) for _ in split.split('\n') ]
-    for num in nums:
-      total += num
+  pattern = ',|\n'
+  if del_ is not None:
+    pattern = f',|\n|\{del_}'
 
-  return total
+  nums = [ int(_) for _ in re.split(pattern, numbers) ]
+  return sum(nums) 
