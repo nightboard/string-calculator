@@ -4,14 +4,17 @@ def add(numbers: str):
   if numbers == '':
     return 0
 
-  del_ = None
+  delstr = None
   if numbers[:2] == '//':
     numbers = numbers[2:]
-    del_, numbers = re.split('\n', numbers, 1)
+    delstr, numbers = re.split('\n', numbers, 1)
 
   pattern = ',|\n'
-  if del_ is not None:
-    pattern = f',|\n|\{del_}'
+  if delstr is not None:
+    formatted_del = ''
+    for del_ in delstr:
+      formatted_del += f'\{del_}'
+    pattern = f',|\n|{formatted_del}'
 
   nums = [ int(_) for _ in re.split(pattern, numbers) ]
 

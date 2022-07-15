@@ -32,3 +32,9 @@ class TestStringCalculator(unittest.TestCase):
   def test_numbers_bigger_than_thousand(self):
     self.assertEqual(add('2,1001,3'), 5)
     self.assertEqual(add('//;\n1003;1001;1005'), 0)
+
+  def test_delemeter_more_than_one_length(self):
+    self.assertEqual(add('//;;\n1;;2;;3'), 6)
+    self.assertEqual(add('//***\n1***2***3***1001'), 6)
+    self.assertRaises(ValueError, add, '//***\n1***2***3***')
+    self.assertRaises(ValueError, add, '//***\n1***2\n3***')
